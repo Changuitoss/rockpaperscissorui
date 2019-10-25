@@ -47,7 +47,7 @@ const mensajes = (roundsTotal, computerSelection, puntajePlayer, puntajeAi, empa
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
 
-	if (playerSelection == 'piedra' || playerSelection == 'papel' || playerSelection == 'tijera') {
+	if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
 		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
 			puntajePlayer += 1;
 			mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
@@ -62,12 +62,6 @@ const plays = (playerSelection, computerSelection) => {
 
 	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
 		ganador.textContent = 'Ganaste!!!'
-		
-		buttons.removeEventListener('click', (e) => {
-			var playerSelection = e.target.value;
-			var computerSelection = computerPlay();
-			plays(playerSelection, computerSelection);
-		})
 	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
 			ganador.textContent = 'Perdiste!!!'
 	}
