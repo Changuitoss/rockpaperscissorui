@@ -1,0 +1,13 @@
+body {
+	text-align: center;
+}
+
+#win {
+	color: green;
+	font-weight: bold;
+}
+
+#loose {
+		color: red;
+	font-weight: bold;
+}

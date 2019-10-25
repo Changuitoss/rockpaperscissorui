@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="index.css">
 	<title>Rock, Paper, Scissors</title>
 </head>
 <body>
+	<div id='reglas'>
+		<p>Clásico Pedra, Papel o Tijera.
+			<br>
+			<br>
+
+				Se juega a 5 rounds.
+		</p>
+		<br>
+	</div>
 	<div id='buttons'>
-		<button id='rock' value='rock'>Rock</button>
-		<button id='paper' value='paper'>Paper</button>
-		<button id='scissors' value='scissors'>Scissors</button>
+		<button id='rock' value='piedra'>Piedra</button>
+		<button id='paper' value='papel'>Papel</button>
+		<button id='scissors' value='tijera'>Tijera</button>
+		<button id='reset'>Reset</button>
+	</div>
+	<div id="info">
+		<p id="round">Round: </p>
+		<p id="pc">Elección de la PC: </p>
+	</div>
+	<div id='results'>
+		<p id='win'>Ganados: </p>
+		<p id='tie'>Empates: </p>
+		<p id='loose'>Perdidos: </p>
+	</div>
+	<div>
+		<p id='ganador'></p>
 	</div>
 	<script type="text/javascript" src="javaScript.js"></script>
 </body>
