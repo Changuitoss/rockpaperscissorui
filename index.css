@@ -2,6 +2,21 @@ body {
 	text-align: center;
 }
 
+.container {
+	display: flex;
+}
+
+.opciones {
+	height: 5rem;
+	display: flex;
+	justify-content: center;
+}
+
+.opciones > a > img {
+	height: 5rem;
+}
+
+
 #win {
 	color: green;
 	font-weight: bold;
@@ -11,3 +26,4 @@ body {
 		color: red;
 	font-weight: bold;
 }
+

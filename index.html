@@ -5,33 +5,32 @@
 	<title>Rock, Paper, Scissors</title>
 </head>
 <body>
-	<div id='reglas'>
-		<p>Clásico Pedra, Papel o Tijera.
-			<br>
-			<br>
+	<div class= 'container'>
+		<div class='titulo'>
+			<h1>Piedra, Papel o Tijera</h1>
+		</div>
+		
+		<div class='opciones'>
+			<div class="info">
+				<p class="round">Round: </p>
+			</div>
+			<a class='rock' value='Piedra' href='#'><img src='images/piedra.png'></a>
+			<a class='paper' value='Papel' href='#'><img src='images/papel.png'></a>
+			<a class='scissors' value='Tijera' href='#'><img src='images/tijera.png'></a>
+		</div>
+		
+		<div id='results'>
+			<p id='win'>Ganados: </p>
+			<p id='tie'>Empates: </p>
+			<p id='loose'>Perdidos: </p>
+		</div>
+		
+		<div>
+			<p id='ganador'></p>
+		</div>
+	</div>
+		
 
-				Se juega a 5 rounds.
-		</p>
-		<br>
-	</div>
-	<div id='buttons'>
-		<button id='rock' value='Piedra'>Piedra</button>
-		<button id='paper' value='Papel'>Papel</button>
-		<button id='scissors' value='Tijera'>Tijera</button>
-		<button id='reset'>Reset</button>
-	</div>
-	<div id="info">
-		<p id="round">Round: </p>
-		<p id="pc">Elección de la PC: </p>
-	</div>
-	<div id='results'>
-		<p id='win'>Ganados: </p>
-		<p id='tie'>Empates: </p>
-		<p id='loose'>Perdidos: </p>
-	</div>
-	<div>
-		<p id='ganador'></p>
-	</div>
 	<script type="text/javascript" src="javaScript.js"></script>
 </body>
 </html>
