@@ -1,9 +1,16 @@
+html {
+    box-sizing: content-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
 	text-align: center;
 }
 
 .container {
 	display: flex;
+	flex-direction: column;
+	margin: 3rem;
 }
 
 .opciones {
@@ -12,8 +19,62 @@ body {
 	justify-content: center;
 }
 
-.opciones > a > img {
-	height: 5rem;
+.info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ppot {
+	margin: 0 auto;
+}
+
+.btn {
+	height: 4rem;
+	width: 4rem;
+	box-shadow: none;
+	border: none;
+}
+
+.piedra {
+	background-image: url('images/piedra.png');
+	background-size: cover;
+}
+
+.papel {
+	background-image: url('images/papel.png');
+	background-size: cover;
+}
+
+.tijera {
+	background-image: url('images/tijera.png');
+	background-size: cover;
+}
+
+.selecciones {
+	display: flex;
+	justify-content: space-around;
+	padding: 0 3rem;
+	margin: 0 7rem;
+}
+
+.seleccion {
+	display: flex;
+	flex-direction: column;
+}
+
+.player > img {
+	height: 15rem;
+	width: 15rem;
+}
+
+.pc > img {
+	height: 15rem;
+	width: 15rem;
+}
+
+.acumuladoPlayer > img {
+	width: 1rem;
 }
 
 

@@ -5,19 +5,35 @@
 	<title>Rock, Paper, Scissors</title>
 </head>
 <body>
-	<div class= 'container'>
+	<div class='container'>
 		<div class='titulo'>
 			<h1>Piedra, Papel o Tijera</h1>
 		</div>
 		
 		<div class='opciones'>
-			<div class="info">
-				<p class="round">Round: </p>
+			<div class="ppot">
+				<button class='piedra btn' value='Piedra' href='#'></button>
+				<button class='papel btn' value='Papel' href='#'></button>
+				<button class='tijera btn' value='Tijera' href='#'></button>
 			</div>
-			<a class='rock' value='Piedra' href='#'><img src='images/piedra.png'></a>
-			<a class='paper' value='Papel' href='#'><img src='images/papel.png'></a>
-			<a class='scissors' value='Tijera' href='#'><img src='images/tijera.png'></a>
 		</div>
+
+		<div class="info">
+			<p class="round">Round: </p>
+		</div>
+
+		<section class="selecciones">
+			<div class='seleccion'>
+				<h2>Player</h2>
+				<div class='player'></div>
+				<div class='acumuladoPlayer'></div>
+			</div>
+			<div class='seleccion'>
+				<h2>PC</h2>
+				<div class='pc'></div>
+				<div class='acumuladoPc'></div>
+			</div>
+		</section>
 		
 		<div id='results'>
 			<p id='win'>Ganados: </p>
