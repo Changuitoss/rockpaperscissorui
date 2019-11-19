@@ -48,7 +48,7 @@ const seleccionPc = (computerSelection) => {
 }
 
 buttons.forEach((button) => {
-	button.addEventListener('click', function(e) => {
+	button.addEventListener('click', function(e) {
 		
 		var playerSelection = e.target.value;
 		seleccionPlayer(playerSelection);
@@ -60,6 +60,11 @@ buttons.forEach((button) => {
 		})
 });
 
+/*const removeListener = () => {
+	buttons.forEach((button) => {
+		button.removeEventListener('click', function(e));
+	}
+}*/
 
 
 const agregaCheck = (where) => {
@@ -74,19 +79,7 @@ const agregaEmpate = () => {
 	seccionEmpate.appendChild(imagenX);
 }
 
-const removeListener = () => {
-	buttons.forEach((button) => {
-		button.removeEventListener('click', function(e));
-		
-			var playerSelection = e.target.value;
-			seleccionPlayer(playerSelection);
-	
-			var computerSelection = computerPlay();
-			seleccionPc(computerSelection);
-	
-			plays(playerSelection, computerSelection);
-		})
-	}
+
 
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
@@ -94,23 +87,20 @@ const plays = (playerSelection, computerSelection) => {
 	if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
 		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
 			puntajePlayer += 1;
-			//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
 			agregaCheck(acumuladoPlayer);
 
 		} else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
 				puntajeAi += 1;
-				//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
 				agregaCheck(acumuladoPc);
 		} else {
 				empate += 1;
-				//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
 				agregaEmpate();
 			}
 	}
 
 	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
 		ganador.textContent = 'Ganaste!!!'
-		removeListener();
+		//removeListener();
 	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
 			ganador.textContent = 'Perdiste!!!'
 	}
