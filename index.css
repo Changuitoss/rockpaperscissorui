@@ -74,7 +74,11 @@ body {
 }
 
 .acumuladoPlayer > img {
-	width: 1rem;
+	width: 2rem;
+}
+
+.acumuladoPc > img {
+	width: 2rem;
 }
 
 

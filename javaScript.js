@@ -8,7 +8,7 @@ const pL = document.querySelector('#loose');
 const round = document.querySelector('.round');
 const ganador = document.querySelector('#ganador');
 const acumuladoPlayer = document.querySelector('.acumuladoPlayer');
-
+const acumuladoPc = document.querySelector('.acumuladoPc');
 
 
 const posibilidades = ['Piedra', 'Tijera', 'Papel', 'Piedra', 'Tijera'];  // ordenadas de forma que siempre [i] le gana a [i + 1]
@@ -68,15 +68,10 @@ const mensajes = (roundsTotal, computerSelection, puntajePlayer, puntajeAi, empa
 
 
 
-
-const agregaCheck = () => {
+const agregaCheck = (where) => {
 	const imagenCheck = document.createElement('img')
 	imagenCheck.setAttribute('src', 'images/checkmark.png');
-	acumuladoPlayer.appendChild(imagenCheck);
-}
-
-const clonaImg = () => {
-	acumuladoPlayer.appendChild(imagenCheck);
+	where.appendChild(imagenCheck);
 }
 
 const plays = (playerSelection, computerSelection) => {
@@ -86,14 +81,12 @@ const plays = (playerSelection, computerSelection) => {
 		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
 			puntajePlayer += 1;
 			mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
-			//if (puntajePlayer == 1) { 
-				agregaCheck();
-			//}else {
-			//	clonaImg();
-			//}
+			agregaCheck(acumuladoPlayer);
+
 		} else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
 				puntajeAi += 1;
 				mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
+				agregaCheck(acumuladoPc);
 		} else {
 				empate += 1;
 				mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
