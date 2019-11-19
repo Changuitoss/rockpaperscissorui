@@ -1,4 +1,4 @@
-Que sume checkmarks a la PC si gana.
+
 O hacer que cuando ganas te muestre con qué selección ganaste (una piedra en verde por ejemplo?), y con cual perdiste.
 
 Hacer que las manitos estén siempre enfrentándose.

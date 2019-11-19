@@ -1,3 +1,7 @@
+:root {
+	--winLoose-width: 3rem;  
+}
+
 html {
     box-sizing: content-box;
     font-family: Arial, Helvetica, sans-serif;
@@ -55,12 +59,16 @@ body {
 	display: flex;
 	justify-content: space-around;
 	padding: 0 3rem;
-	margin: 0 7rem;
+	margin: 0 15rem;
 }
 
 .seleccion {
 	display: flex;
 	flex-direction: column;
+}
+
+.empate {
+	align-self: flex-end;
 }
 
 .player > img {
@@ -74,13 +82,16 @@ body {
 }
 
 .acumuladoPlayer > img {
-	width: 2rem;
+	width: var(--winLoose-width);
 }
 
 .acumuladoPc > img {
-	width: 2rem;
+	width: var(--winLoose-width);
 }
 
+.empate > img {
+	width: var(--winLoose-width);
+}
 
 #win {
 	color: green;

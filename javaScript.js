@@ -9,6 +9,7 @@ const round = document.querySelector('.round');
 const ganador = document.querySelector('#ganador');
 const acumuladoPlayer = document.querySelector('.acumuladoPlayer');
 const acumuladoPc = document.querySelector('.acumuladoPc');
+const seccionEmpate = document.querySelector('.empate');
 
 
 const posibilidades = ['Piedra', 'Tijera', 'Papel', 'Piedra', 'Tijera'];  // ordenadas de forma que siempre [i] le gana a [i + 1]
@@ -28,6 +29,12 @@ const imagenSeleccionPlayer = document.createElement('img');
 const imagenSeleccionPc = document.createElement('img');
 
 
+
+const computerPlay = () => {
+	var azar = Math.floor(Math.random() * 3)
+	return posibilidades[azar];
+}
+
 //Agrega la imagen de seleccion del player
 const seleccionPlayer = (playerSelection) => {
 	imagenSeleccionPlayer.setAttribute('src', `images/${playerSelection}.png`)
@@ -41,7 +48,7 @@ const seleccionPc = (computerSelection) => {
 }
 
 buttons.forEach((button) => {
-	button.addEventListener('click', (e) => {
+	button.addEventListener('click', function(e) => {
 		
 		var playerSelection = e.target.value;
 		seleccionPlayer(playerSelection);
@@ -54,19 +61,6 @@ buttons.forEach((button) => {
 });
 
 
-const computerPlay = () => {
-	var azar = Math.floor(Math.random() * 3)
-	return posibilidades[azar];
-}
-
-const mensajes = (roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate) => {
-					round.textContent = `Round: ${roundsTotal}`;
-					pW.textContent = `Ganados: ${puntajePlayer}`;
-					pT.textContent = `Empates: ${empate}`;
-					pL.textContent = `Perdidos: ${puntajeAi}`;
-}
-
-
 
 const agregaCheck = (where) => {
 	const imagenCheck = document.createElement('img')
@@ -74,27 +68,49 @@ const agregaCheck = (where) => {
 	where.appendChild(imagenCheck);
 }
 
+const agregaEmpate = () => {
+	const imagenX = document.createElement('img')
+	imagenX.setAttribute('src', 'images/x.png');
+	seccionEmpate.appendChild(imagenX);
+}
+
+const removeListener = () => {
+	buttons.forEach((button) => {
+		button.removeEventListener('click', function(e));
+		
+			var playerSelection = e.target.value;
+			seleccionPlayer(playerSelection);
+	
+			var computerSelection = computerPlay();
+			seleccionPc(computerSelection);
+	
+			plays(playerSelection, computerSelection);
+		})
+	}
+
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
 
 	if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
 		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
 			puntajePlayer += 1;
-			mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
+			//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
 			agregaCheck(acumuladoPlayer);
 
 		} else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
 				puntajeAi += 1;
-				mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
+				//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
 				agregaCheck(acumuladoPc);
 		} else {
 				empate += 1;
-				mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
+				//mensajes(roundsTotal, computerSelection, puntajePlayer, puntajeAi, empate)
+				agregaEmpate();
 			}
 	}
 
 	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
 		ganador.textContent = 'Ganaste!!!'
+		removeListener();
 	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
 			ganador.textContent = 'Perdiste!!!'
 	}
