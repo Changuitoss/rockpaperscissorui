@@ -10,6 +10,8 @@ const ganador = document.querySelector('#ganador');
 const acumuladoPlayer = document.querySelector('.acumuladoPlayer');
 const acumuladoPc = document.querySelector('.acumuladoPc');
 const seccionEmpate = document.querySelector('.empate');
+const opciones = document.querySelector('.opciones');
+const ppot = document.querySelector('.ppot');
 
 
 const posibilidades = ['Piedra', 'Tijera', 'Papel', 'Piedra', 'Tijera'];  // ordenadas de forma que siempre [i] le gana a [i + 1]
@@ -49,6 +51,7 @@ const seleccionPc = (computerSelection) => {
 
 
 
+
 function clickHandler(e) {
 	var playerSelection = e.target.value;
 	seleccionPlayer(playerSelection);
@@ -65,13 +68,10 @@ function buttonListener() {
 		button.addEventListener('click', clickHandler)});
 	}
 
-function removeListener() {
-	buttons.forEach((button) => {
-		button.removeEventListener('click', clickHandler)});
-	}
+buttonListener();
 
 
-	buttonListener();
+
 
 const agregaCheck = (where) => {
 	const imagenCheck = document.createElement('img')
@@ -86,6 +86,8 @@ const agregaEmpate = () => {
 }
 
 
+const replayBtn = document.createElement('button');
+replayBtn.textContent = 'Replay';
 
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
@@ -103,12 +105,19 @@ const plays = (playerSelection, computerSelection) => {
 				agregaEmpate();
 			}
 	}
-
 	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
 		ganador.textContent = 'Ganaste!!!'
-		removeListener();
+		ppot.style.display = 'none';
+		opciones.appendChild(replayBtn);
+
 	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
 		ganador.textContent = 'Perdiste!!!'
-		removeListener();
+		ppot.style.display = 'none';
+		opciones.appendChild(replayBtn);
 	}
 }
+
+replayBtn.addEventListener('click', function() {
+	ppot.style.display = 'block';
+	this.display = 'none';
+})
