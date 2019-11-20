@@ -47,25 +47,31 @@ const seleccionPc = (computerSelection) => {
 	pc.appendChild(imagenSeleccionPc);
 }
 
-buttons.forEach((button) => {
-	button.addEventListener('click', function(e) {
-		
-		var playerSelection = e.target.value;
-		seleccionPlayer(playerSelection);
 
-		var computerSelection = computerPlay();
-		seleccionPc(computerSelection);
 
-		plays(playerSelection, computerSelection);
-		})
-});
+function clickHandler(e) {
+	var playerSelection = e.target.value;
+	seleccionPlayer(playerSelection);
 
-/*const removeListener = () => {
+	var computerSelection = computerPlay();
+	seleccionPc(computerSelection);
+
+	plays(playerSelection, computerSelection);
+	};
+
+
+function buttonListener() {
 	buttons.forEach((button) => {
-		button.removeEventListener('click', function(e));
+		button.addEventListener('click', clickHandler)});
 	}
-}*/
 
+function removeListener() {
+	buttons.forEach((button) => {
+		button.removeEventListener('click', clickHandler)});
+	}
+
+
+	buttonListener();
 
 const agregaCheck = (where) => {
 	const imagenCheck = document.createElement('img')
@@ -100,8 +106,9 @@ const plays = (playerSelection, computerSelection) => {
 
 	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
 		ganador.textContent = 'Ganaste!!!'
-		//removeListener();
+		removeListener();
 	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
-			ganador.textContent = 'Perdiste!!!'
+		ganador.textContent = 'Perdiste!!!'
+		removeListener();
 	}
 }
