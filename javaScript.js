@@ -2,11 +2,7 @@ const buttons = document.querySelectorAll('button');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
-const pW = document.querySelector('#win');
-const pT = document.querySelector('#tie');
-const pL = document.querySelector('#loose');
 const round = document.querySelector('.round');
-const ganador = document.querySelector('#ganador');
 const acumuladoPlayer = document.querySelector('.acumuladoPlayer');
 const acumuladoPc = document.querySelector('.acumuladoPc');
 const seccionEmpate = document.querySelector('.empate');
@@ -89,19 +85,26 @@ const agregaEmpate = () => {
 const replayBtn = document.createElement('button');
 replayBtn.textContent = 'Replay';
 
+function sumaRound() {
+	round.textContent = 'Round: ' + roundsTotal;
+}
+
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
 
 	if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
 		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
 			puntajePlayer += 1;
+			sumaRound();
 			agregaCheck(acumuladoPlayer);
 
 		} else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
 				puntajeAi += 1;
+				sumaRound();
 				agregaCheck(acumuladoPc);
 		} else {
 				empate += 1;
+				sumaRound();
 				agregaEmpate();
 			}
 	}
@@ -118,27 +121,25 @@ const plays = (playerSelection, computerSelection) => {
 }
 
 
+function reset() {
+	const imagenesScore = document.querySelectorAll('.seleccion .imagen');
 
-//replayBtn.addEventListener('click', reset());
+	for(var i = 0; i < imagenesScore.length; i++) {
+		while(imagenesScore[i].firstChild) {
+			imagenesScore[i].removeChild(imagenesScore[i].firstChild);
+		}
+	}
 
-replayBtn.addEventListener('click', function() {
-	const imagenesScore = document.querySelectorAll('.seleccion > div > img');
-	console.log(imagenesScore);
-	imagenesScore.forEach(image => {
-		image.style.display = 'none';
-	});
-});
+	ppot.style.display = 'block';
+	opciones.removeChild(replayBtn);
+	roundsTotal = 0;
+	puntajeAi = 0;
+	puntajePlayer = 0;
+	ganador.textContent = '';
+	round.textContent = '';
+}
+
+replayBtn.addEventListener('click', reset);
 
 
-/*function reset() {
-	//const imagenesScore = document.querySelectorAll('.seleccion > div > img');
-	console.log(imagenesScore);
-
-
-	imagenesScore.forEach(image => {
-		image.style.display = 'none';
-
-		ppot.style.display = 'block';
-	})
-}*/
 
