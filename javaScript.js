@@ -117,19 +117,28 @@ const plays = (playerSelection, computerSelection) => {
 	}
 }
 
-var imagenesScore = document.querySelectorAll('.seleccion > div > img');
 
 
-function reset() {
-	//const imagenesScore = document.querySelectorAll('.seleccion > div > img');
+//replayBtn.addEventListener('click', reset());
+
+replayBtn.addEventListener('click', function() {
+	const imagenesScore = document.querySelectorAll('.seleccion > div > img');
 	console.log(imagenesScore);
 	imagenesScore.forEach(image => {
 		image.style.display = 'none';
-	//imagenesScore.style.display = "none";
-	//replayBtn.style.display = 'none';
+	});
+});
+
+
+/*function reset() {
+	//const imagenesScore = document.querySelectorAll('.seleccion > div > img');
+	console.log(imagenesScore);
+
+
+	imagenesScore.forEach(image => {
+		image.style.display = 'none';
+
 		ppot.style.display = 'block';
 	})
-}
-
-replayBtn.addEventListener('click', reset());
+}*/
 
