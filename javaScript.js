@@ -121,7 +121,9 @@ var imagenesScore = document.querySelectorAll('.seleccion > div > img');
 
 
 function reset() {
-	imagenesScore.forEach((image) => {
+	//const imagenesScore = document.querySelectorAll('.seleccion > div > img');
+	console.log(imagenesScore);
+	imagenesScore.forEach(image => {
 		image.style.display = 'none';
 	//imagenesScore.style.display = "none";
 	//replayBtn.style.display = 'none';
