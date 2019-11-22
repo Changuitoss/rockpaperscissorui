@@ -117,7 +117,17 @@ const plays = (playerSelection, computerSelection) => {
 	}
 }
 
-replayBtn.addEventListener('click', function() {
-	ppot.style.display = 'block';
-	this.display = 'none';
-})
+var imagenesScore = document.querySelectorAll('.seleccion > div > img');
+
+
+function reset() {
+	imagenesScore.forEach((image) => {
+		image.style.display = 'none';
+	//imagenesScore.style.display = "none";
+	//replayBtn.style.display = 'none';
+		ppot.style.display = 'block';
+	})
+}
+
+replayBtn.addEventListener('click', reset());
+
