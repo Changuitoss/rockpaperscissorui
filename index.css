@@ -79,6 +79,7 @@ body {
 .pc > img {
 	height: 15rem;
 	width: 15rem;
+	transform: scaleX(-1);
 }
 
 .acumuladoPlayer > img {
@@ -103,3 +104,10 @@ body {
 	font-weight: bold;
 }
 
+.replayBtn {
+	color: red;
+	height: 3rem;
+	width: 7rem;
+	background-color: white;
+	font-size: 1.5rem;
+}

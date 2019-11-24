@@ -83,6 +83,7 @@ const agregaEmpate = () => {
 
 
 const replayBtn = document.createElement('button');
+replayBtn.classList.add('replayBtn');
 replayBtn.textContent = 'Replay';
 
 function sumaRound() {
