@@ -4,7 +4,7 @@
 
 html {
     box-sizing: content-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif, Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -14,7 +14,31 @@ body {
 .container {
 	display: flex;
 	flex-direction: column;
-	margin: 3rem;
+	margin: 1rem;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 4rem;
+  margin: .5rem 0 1.5rem 0;
+}
+
+.ganaste {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: -1rem 0 1rem 0;
+  display: none;
+  color: rgb(61, 230, 61);
+}
+
+.perdiste {
+  font-family: 'Amatic SC', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: -1rem 0 1rem 0;
+  display: none;
+  color: red;
 }
 
 .opciones {
@@ -29,6 +53,11 @@ body {
 	align-items: center;
 }
 
+.round {
+  font-size: 1.5rem;
+  display: none;
+}
+
 .ppot {
 	margin: 0 auto;
 }
@@ -37,7 +66,17 @@ body {
 	height: 4rem;
 	width: 4rem;
 	box-shadow: none;
-	border: none;
+  border: none;
+  cursor: pointer;
+  transition: all .1s;
+}
+
+.btn:hover {
+  transform: translateY(-.3rem);
+}
+
+.btn:active {
+  transform: translateY(-.1rem);
 }
 
 .piedra {
@@ -55,6 +94,10 @@ body {
 	background-size: cover;
 }
 
+.jugador {
+  display: none;
+}
+
 .selecciones {
 	display: flex;
 	justify-content: space-around;
@@ -64,7 +107,7 @@ body {
 
 .seleccion {
 	display: flex;
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .empate {
@@ -72,22 +115,39 @@ body {
 }
 
 .player > img {
-	height: 15rem;
-	width: 15rem;
+	height: 14rem;
+  width: 14rem;
+}
+
+.player-seleccion {
+  position: relative;
+  z-index: 10;
 }
 
 .pc > img {
-	height: 15rem;
+  transform: scaleX(-1);
+	height: 14rem;
+	width: 14rem;
+}
+
+.pc-animado {
+  background-size: cover;
+  height: 15rem;
 	width: 15rem;
-	transform: scaleX(-1);
+  animation: suspenso 1.5s;
 }
 
 .acumuladoPlayer > img {
-	width: var(--winLoose-width);
+  width: var(--winLoose-width);
 }
 
 .acumuladoPc > img {
-	width: var(--winLoose-width);
+  width: var(--winLoose-width);
+}
+
+.check {
+  position: relative;
+  z-index: 10;
 }
 
 .empate > img {
@@ -105,9 +165,88 @@ body {
 }
 
 .replayBtn {
+  border: 0px;
 	color: red;
-	height: 3rem;
-	width: 7rem;
+	height: 2rem;
+	width: 5rem;
 	background-color: white;
-	font-size: 1.5rem;
+  font-size: 1rem;
+  transition: all .2s;
+}
+
+.replayBtn:hover {
+  box-shadow: 0 .1rem .3rem rgba(0,0,0,.5);
+  border-radius: 5%;
+  transform: translateY(-.2rem);
+}
+
+.replayBtn:active {
+  box-shadow: 0 .05rem .15rem rgba(0,0,0,.5);
+  border-radius: 5%;
+  transform: translateY(-.1rem);
+}
+
+#ganador {
+  font-family: 'Amatic SC', cursive;
+  color: rgb(61, 230, 61);
+  font-weight: 700;
+  font-size: 3rem;
+
+}
+
+@keyframes suspenso {
+  0% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(-1rem) scaleX(-1);
+  }
+
+  10% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scaleX(-1);
+  }
+
+  20% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(-1rem) scaleX(-1);
+  }
+
+  30% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scaleX(-1);
+  }
+
+  40% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(-1rem) scaleX(-1);
+  }
+
+  50% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scaleX(-1);
+  }
+
+  60% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(-1rem) scaleX(-1);
+  }
+
+  70% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scaleX(-1);
+  }
+
+  80% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(-1rem) scaleX(-1);
+  }
+
+  90% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scaleX(-1);
+  }
+
+  100% {
+    background-image: url('./images/piedra.png');
+    transform: translateY(1rem) scale(1.2) scaleX(-1);
+  }
 }

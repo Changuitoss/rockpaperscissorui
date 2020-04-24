@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="index.css">
-	<title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"> 	<title>Rock, Paper, Scissors</title>
 </head>
 <body>
 	<div class='container'>
 		<div class='titulo'>
-			<h1>Piedra, Papel o Tijera</h1>
+      <h1>Piedra, Papel o Tijera</h1>
+      <p class="ganaste">Ganaste!!</p>
+      <p class="perdiste">Perdiste!!</p>
+      <h2 class="subtitulo">Choose your weapon:</h2>
 		</div>
 		
 		<div class='opciones'>
@@ -24,7 +27,7 @@
 
 		<section class="selecciones">
 			<div class='seleccion'>
-				<h2>Player</h2>
+				<h2 class="jugador">Player</h2>
 				<div class='player imagen'></div>
 				<div class='acumuladoPlayer imagen'></div>
 			</div>
@@ -32,8 +35,9 @@
 				<div class="empate imagen"></div>
 			</div>
 			<div class='seleccion'>
-				<h2>PC</h2>
-				<div class='pc imagen'></div>
+				<h2 class="jugador">PC</h2>
+				<div class='pc imagen'>
+        </div>
 				<div class='acumuladoPc imagen'></div>
 			</div>
 		</section>

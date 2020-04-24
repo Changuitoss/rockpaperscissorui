@@ -1,3 +1,6 @@
+const subtitulo = document.querySelector('.subtitulo');
+const ganaste = document.querySelector('.ganaste');
+const perdiste = document.querySelector('.perdiste');
 const buttons = document.querySelectorAll('button');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
@@ -27,7 +30,6 @@ const imagenSeleccionPlayer = document.createElement('img');
 const imagenSeleccionPc = document.createElement('img');
 
 
-
 const computerPlay = () => {
 	var azar = Math.floor(Math.random() * 3)
 	return posibilidades[azar];
@@ -35,21 +37,33 @@ const computerPlay = () => {
 
 //Agrega la imagen de seleccion del player
 const seleccionPlayer = (playerSelection) => {
-	imagenSeleccionPlayer.setAttribute('src', `images/${playerSelection}.png`)
+  imagenSeleccionPlayer.setAttribute('src', `images/${playerSelection}.png`);
+  imagenSeleccionPlayer.classList.add('player-seleccion');
 	player.appendChild(imagenSeleccionPlayer);
 }
 
 //Agrega la imagen de seleccion de la PC
 const seleccionPc = (computerSelection) => {
-	imagenSeleccionPc.setAttribute('src', `images/${computerSelection}.png`)
-	pc.appendChild(imagenSeleccionPc);
+  pc.innerHTML = '';
+  const imagenSeleccionPcAnimada = document.createElement('div');
+  imagenSeleccionPcAnimada.classList.add('pc-animado');
+  pc.appendChild(imagenSeleccionPcAnimada);
+
+  setTimeout(() => {  //saca la animacion y pone la imagen de seleccion de PC
+    pc.innerHTML = '';
+    imagenSeleccionPc.setAttribute('src', `images/${computerSelection}.png`)
+    pc.appendChild(imagenSeleccionPc);
+  }, 1500);
+
 }
 
 
 
 
 function clickHandler(e) {
-	var playerSelection = e.target.value;
+  var playerSelection = e.target.value;
+  var round = document.querySelector('.round');
+  round.style.display = 'block';
 	seleccionPlayer(playerSelection);
 
 	var computerSelection = computerPlay();
@@ -70,7 +84,8 @@ buttonListener();
 
 
 const agregaCheck = (where) => {
-	const imagenCheck = document.createElement('img')
+  const imagenCheck = document.createElement('img');
+  imagenCheck.classList.add('check');
 	imagenCheck.setAttribute('src', 'images/checkmark.png');
 	where.appendChild(imagenCheck);
 }
@@ -92,33 +107,36 @@ function sumaRound() {
 
 const plays = (playerSelection, computerSelection) => {
 	roundsTotal++;
+  sumaRound();
 
-	if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
-		if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
-			puntajePlayer += 1;
-			sumaRound();
-			agregaCheck(acumuladoPlayer);
-
-		} else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
-				puntajeAi += 1;
-				sumaRound();
-				agregaCheck(acumuladoPc);
-		} else {
-				empate += 1;
-				sumaRound();
-				agregaEmpate();
-			}
-	}
-	if (puntajePlayer > puntajeAi && puntajePlayer == 5) {
-		ganador.textContent = 'Ganaste!!!'
-		ppot.style.display = 'none';
-		opciones.appendChild(replayBtn);
-
-	} else if (puntajePlayer < puntajeAi && puntajeAi == 5) {
-		ganador.textContent = 'Perdiste!!!'
-		ppot.style.display = 'none';
-		opciones.appendChild(replayBtn);
-	}
+  setTimeout(() => {
+    if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
+      if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
+        puntajePlayer += 1;
+        agregaCheck(acumuladoPlayer);
+  
+      } else if(computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 2]) {  // chequea que la eleccion de la compu sea el [i + 2] en posibilidades[]
+          puntajeAi += 1;
+          agregaCheck(acumuladoPc);
+      } else {
+          empate += 1;
+          agregaEmpate();
+        }
+    }
+    if (puntajePlayer > puntajeAi && puntajePlayer == 3) {
+      subtitulo.style.display = 'none';
+      ganaste.style.display = 'block';
+      ppot.style.display = 'none';
+      opciones.appendChild(replayBtn);
+  
+    } else if (puntajePlayer < puntajeAi && puntajeAi == 3) {
+      subtitulo.style.display = 'none';
+      perdiste.style.display = 'block';
+      ppot.style.display = 'none';
+      opciones.appendChild(replayBtn);
+    }
+  }, 1600);
+	
 }
 
 
@@ -131,6 +149,9 @@ function reset() {
 		}
 	}
 
+  ganaste.style.display = 'none';
+  perdiste.style.display = 'none';
+  subtitulo.style.display = 'block';
 	ppot.style.display = 'block';
 	opciones.removeChild(replayBtn);
 	roundsTotal = 0;
