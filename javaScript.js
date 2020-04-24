@@ -13,7 +13,7 @@ const opciones = document.querySelector('.opciones');
 const ppot = document.querySelector('.ppot');
 
 
-const posibilidades = ['Piedra', 'Tijera', 'Papel', 'Piedra', 'Tijera'];  // ordenadas de forma que siempre [i] le gana a [i + 1]
+const posibilidades = ['piedra', 'tijera', 'papel', 'piedra', 'tijera'];  // ordenadas de forma que siempre [i] le gana a [i + 1]
 
 var puntajePlayer = 0;
 var puntajeAi = 0;
@@ -62,6 +62,7 @@ const seleccionPc = (computerSelection) => {
 
 function clickHandler(e) {
   var playerSelection = e.target.value;
+  console.log(playerSelection)
   var round = document.querySelector('.round');
   round.style.display = 'block';
 	seleccionPlayer(playerSelection);
@@ -110,7 +111,7 @@ const plays = (playerSelection, computerSelection) => {
   sumaRound();
 
   setTimeout(() => {
-    if (playerSelection == 'Piedra' || playerSelection == 'Papel' || playerSelection == 'Tijera') {
+    if (playerSelection == 'piedra' || playerSelection == 'papel' || playerSelection == 'tijera') {
       if (computerSelection == posibilidades[posibilidades.indexOf(playerSelection) + 1]) {  // chequea que la eleccion de la compu sea el proximo en posibilidades[]
         puntajePlayer += 1;
         agregaCheck(acumuladoPlayer);
